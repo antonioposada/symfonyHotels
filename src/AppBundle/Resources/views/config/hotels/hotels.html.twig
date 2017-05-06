@@ -1,0 +1,33 @@
+{% extends '@App/app.html.twig' %}
+
+{% block content %}
+    {{ parent() }}
+
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <a href="{{ url('_hotels_create') }}" class="btn btn-primary pull-right">New Hotel</a>
+                    <div class="panel-heading">Hotels </div>
+                    <div class="panel-body">
+                        <div>
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Address</th>
+                                    <th width="100px">&nbsp;</th>
+                                </tr>
+                                </thead>
+                                    {% for Hotel in hotels %}
+                                        {% include '@App/config/hotels/hotel_row.html.twig' %}
+                                    {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

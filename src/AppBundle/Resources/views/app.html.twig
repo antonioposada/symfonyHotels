@@ -91,13 +91,14 @@
 
     {% if is_granted("ROLE_ADMIN") %}
         {% block content %}
-            {% if alert %}
-                <div class="alert_container">
-                    <p v-show="alert.display"
-                       class="alert alert-danger"
-                       id="error_message">{{ alert.message }}</p>
-                </div>
-            {% endif %}
+            {# ...or you can read and display every flash message available #}
+            {% for type, flash_messages in app.session.flashBag.all %}
+                {% for flash_message in flash_messages %}
+                    <div class="alert alert-{{ type }} flash-{{ type }}">
+                        {{ flash_message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
         {% endblock %}
     {% else %}
 
