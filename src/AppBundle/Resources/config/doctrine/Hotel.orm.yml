@@ -1,0 +1,26 @@
+AppBundle\Entity\Hotel:
+    type: entity
+    table: hotels
+    repositoryClass: AppBundle\Repository\HotelRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: '191'
+        category:
+            type: integer
+        address:
+            type: string
+            length: '191'
+        createdAt:
+            type: datetime
+            column: created_at
+        updatedAt:
+            type: datetime
+            column: updated_at
+    lifecycleCallbacks: {  }

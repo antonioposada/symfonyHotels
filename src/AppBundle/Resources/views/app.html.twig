@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Hotel Group</title>
+
+    <!-- Styles -->
+    <link href="{{ asset('/css/home.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+    <link href="{{ asset('/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet">
+</head>
+<style>
+    .fade-transition {
+        transition: all 1s ease;
+        opacity: 100;
+    }
+    .fade-enter, .fade-leave {
+        opacity: 0;
+    }
+    .alert_container {
+        height: 60px;
+    }
+</style>
+<body>
+<div id="app">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('_homepage') }}">
+                    Hotel Group
+                </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    &nbsp;
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li class="dropdown">
+                            <a href="{{ url('_hotels') }}">Hotels</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ url('_services') }}">Services</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ url('_rooms') }}">Rooms</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ url('_roomtypes') }}">Room Types</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ url('_offers') }}">Offers</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{{ url('_rates') }}">Rates</a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li>
+                            <a href="#">
+                                {{ app.user.username }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('fos_user_security_logout') }}">
+                                {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% if is_granted("ROLE_ADMIN") %}
+        {% block content %}
+            {% if alert %}
+                <div class="alert_container">
+                    <p v-show="alert.display"
+                       class="alert alert-danger"
+                       id="error_message">{{ alert.message }}</p>
+                </div>
+            {% endif %}
+        {% endblock %}
+    {% else %}
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-heading alert-danger">Error login</div>
+
+                        <div class="panel-body">
+                            You are not logged in! Push the bottom
+
+                            <a href="{{ url('_homepage') }}">
+                                <button class="btn-primary">HOMEPAGE</button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+{% block scripts %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,8 @@
+# src/AppBundle/Resources/config/validation.yml
+src\AppBundle\Entity\Hotel:
+    properties:
+        name:
+            - NotBlank: ~
+        category:
+             - Min: { limit: 0, message: You must be 0 or under to enter. }
+             - Max: { limit: 6, message: You must be 6 or under to enter. }

@@ -1,0 +1,19 @@
+<tr class="animated">
+    <td>
+        <input type="text" v-model="draft.name" class="form-control" value="{{ Hotel.name }}">
+    </td>
+    <td>
+        <input type="text" v-model="draft.category" class="form-control" value="{{ Hotel.category }}">
+    </td>
+    <td>
+        <input type="text" v-model="draft.address" class="form-control" value="{{ Hotel.address }}">
+    </td>
+    <td>
+        <a href="#" @click.prevent="update()">
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        </a>
+        <a href="#" @click.prevent="cancel()">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </a>
+    </td>
+</tr>

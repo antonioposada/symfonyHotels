@@ -1,0 +1,40 @@
+_homepage:
+    path:     /{_locale}
+    defaults: { _controller: AppBundle:Default:index, _locale: en }
+    requirements:
+            _locale: en|es|it
+
+_config:
+    path: /config
+
+_booking:
+    path:     /{_locale}/booking/{id}
+    defaults: { _controller: AppBundle:Default:login , _locale: en}
+    requirements:
+            _locale: en|es|it
+
+_hotels:
+    path:     /{_locale}/config/hotels
+    defaults: { _controller: AppBundle:Config:hotels, _locale: en }
+    requirements:
+            _locale: en|es|it
+
+_services:
+    path:     /services
+    defaults: { _controller: AppBundle:Config:services }
+
+_rooms:
+    path:     /rooms
+    defaults: { _controller: AppBundle:Config:rooms }
+
+_roomtypes:
+    path:     /roomtypes
+    defaults: { _controller: AppBundle:Config:roomtypes }
+
+_offers:
+    path:     /offers
+    defaults: { _controller: AppBundle:Config:offers }
+
+_rates:
+    path:     /rates
+    defaults: { _controller: AppBundle:Config:rates }
