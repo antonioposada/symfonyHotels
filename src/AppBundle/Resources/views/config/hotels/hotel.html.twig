@@ -1,0 +1,18 @@
+{% extends '@App/app.html.twig' %}
+
+{% block content %}
+    {{ parent() }}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Edit Hotel</h1>
+                {{ form_start(hotelForm) }}
+                {{ form_row(hotelForm.name) }}
+                {{ form_row(hotelForm.category) }}
+                {{ form_row(hotelForm.address) }}
+                <button type="submit" class="btn btn-primary" formnovalidate>Save</button>
+                {{ form_end(hotelForm) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

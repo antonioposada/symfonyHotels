@@ -4,9 +4,6 @@ _homepage:
     requirements:
             _locale: en|es|it
 
-_config:
-    path: /config
-
 _booking:
     path:     /{_locale}/booking/{id}
     defaults: { _controller: AppBundle:Default:login , _locale: en}
@@ -15,7 +12,25 @@ _booking:
 
 _hotels:
     path:     /{_locale}/config/hotels
-    defaults: { _controller: AppBundle:Config:hotels, _locale: en }
+    defaults: { _controller: AppBundle:Hotel:hotels, _locale: en }
+    requirements:
+            _locale: en|es|it
+
+_hotels_create:
+    path:     /{_locale}/config/hotel/new
+    defaults: { _controller: AppBundle:Hotel:new, _locale: en }
+    requirements:
+            _locale: en|es|it
+
+_hotels_edit:
+    path:     /{_locale}/config/hotel/{id}
+    defaults: { _controller: AppBundle:Hotel:edit, _locale: en }
+    requirements:
+            _locale: en|es|it
+
+_hotels_delete:
+    path:     /{_locale}/config/hotel/delete/{id}
+    defaults: { _controller: AppBundle:Hotel:hotelDelete, _locale: en }
     requirements:
             _locale: en|es|it
 

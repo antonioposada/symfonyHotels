@@ -1,0 +1,19 @@
+<tr class="animated">
+    <td>
+        {{ Hotel.name }}
+    </td>
+    <td>
+        {{ Hotel.category }}
+    </td>
+    <td>
+        {{ Hotel.address }}
+    </td>
+    <td>
+        <a href="{{ url('_hotels_edit', { 'id': Hotel.id }) }}">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </a>
+        <a href="{{ url('_hotels_delete', { 'id': Hotel.id }) }}">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </a>
+    </td>
+</tr>
